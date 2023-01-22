@@ -70,7 +70,7 @@ Use Azure B2C to protect a minimal Dotnet WebAPI &amp; Test with Postman
 - #### (Optional) Download SPA for testing
 	- https://learn.microsoft.com/en-us/azure/active-directory-b2c/configure-authentication-sample-spa-app#step-31-update-the-spa-sample
 	- git clone https://github.com/Azure-Samples/ms-identity-b2c-javascript-spa.git
-
+- npm install -g npm@9.3.1
 
 # Postman Testing
 	- This data is available @ Azure portal or via the azure cli
