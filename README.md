@@ -28,8 +28,20 @@ dotnet new webapi -minimal -au IndividualB2C -o YOURPROJECTNAME
 
 // to debug PII errors (optional)
 Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true; // debugging
-// to disable CORS (optional)
+// Optional CORS changes (not secure)
 builder.Services.AddCors(options => options.AddPolicy("allowAny", o => o.AllowAnyOrigin()));
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+    // unsafe cors policy
+    app.UseCors(x => x
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .SetIsOriginAllowed(origin => true) // allow any origin
+        .AllowCredentials()); 
+}
 
 // note that, as of 1-2023, the string passed to Configuration[] defaults to AzureAd:Scopes when using 
 // dotnet new webapi -minimal -au IndividualB2C -o YOURPROJECTNAME
