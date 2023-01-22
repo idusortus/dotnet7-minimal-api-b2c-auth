@@ -25,17 +25,13 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-    // global cors policy
+    // unsafe cors policy
     app.UseCors(x => x
         .AllowAnyMethod()
         .AllowAnyHeader()
         .SetIsOriginAllowed(origin => true) // allow any origin
         .AllowCredentials()); 
 }
-
-
-
-
 
 app.UseHttpsRedirection();
 
@@ -66,7 +62,7 @@ app.MapGet("/weatherforecast", (HttpContext httpContext) =>
 .WithOpenApi()
 .RequireAuthorization();
 
-app.MapGet("/anonlogin", () => "This endpoint also for all roles.")
+app.MapGet("/anonlogin", () => "No auth required to GET from this endpoint.")
    .AllowAnonymous();
 
 app.Run();
