@@ -56,8 +56,8 @@ app.MapGet("/anonlogin", () => "Anyone can call this. No Auth.")
 
 # Azure Setup
 - Register API App  **App ID: 2**
-	- WebAPI-2
-	- 8b22ab15-f0fd-49d1-929c-d4b4f59cd697 (Use this value in appsettings.json)
+	- WebAPI-2 (name it whatever)
+	- ClientID: 8b22ab15-f0fd-49d1-929c-d4b4f59cd697 (Use this value in appsettings.json)
 	- Set Application ID URI
 		- https://fscwi.onmicrosoft.com/webapi
 	- Add Scope
@@ -68,12 +68,12 @@ app.MapGet("/anonlogin", () => "Anyone can call this. No Auth.")
 		- access_as_user
 		- https://fscwi.onmicrosoft.com/webapi/access_as_user  
 - Register SPA  **App ID: 1**
-	- SPA-2
-	- bc6fd8fb-0424-42d3-9bfc-08222165520d  ( Use this value in Postman )
+	- SPA-2 (name it whatever)
+	- ClientID: bc6fd8fb-0424-42d3-9bfc-08222165520d  ( Use this value in Postman )
 	- https://happyDogTreats.onmicrosoft.com/webapi
 	- RedirectURI
 		- http://localhost:7042
-		- ( Update API )
+		- ( remember to update WEBAPI launch settings.json )
 		```json
 		"applicationUrl": "https://localhost:7042;http://localhost:5042"
 		```
