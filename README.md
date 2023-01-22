@@ -20,6 +20,14 @@ Use Azure B2C to protect a minimal Dotnet WebAPI &amp; Test with Postman
 	>		OS: Windows_NT x64 10.0.19044  
 	>		Sandboxed: No  
 
+```csharp
+dotnet new webapi -minimal -au IndividualB2C
+
+** Set Properties > launchSettings.json to use specific URL (optional)
+"applicationUrl": "https://localhost:7042;http://localhost:5042",
+
+```
+
 
 # Azure Setup
 - Register API App  **App ID: 2**
