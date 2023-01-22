@@ -21,11 +21,24 @@ Use Azure B2C to protect a minimal Dotnet WebAPI &amp; Test with Postman
 	>		Sandboxed: No  
 
 ```csharp
-dotnet new webapi -minimal -au IndividualB2C
+dotnet new webapi -minimal -au IndividualB2C -o YOURPROJECTNAME
 
 ** Set Properties > launchSettings.json to use specific URL (optional)
 "applicationUrl": "https://localhost:7042;http://localhost:5042",
 
+// to debug PII errors (optional)
+Microsoft.IdentityModel.Logging.IdentityModelEventSource.ShowPII = true; // debugging
+// to disable CORS (optional)
+builder.Services.AddCors(options => options.AddPolicy("allowAny", o => o.AllowAnyOrigin()));
+
+// note that, as of 1-2023, the string passed to Configuration[] defaults to AzureAd:Scopes when using 
+// dotnet new webapi -minimal -au IndividualB2C -o YOURPROJECTNAME
+// I opted to set it to AzureAdB2C:Scopes since the AzureAd section does not exist in appsettings.json.
+var scopeRequiredByApi = app.Configuration["AzureAdB2C:Scopes"] ?? "";
+
+// anonymous endpoint for API verification
+app.MapGet("/anonlogin", () => "Anyone can call this. No Auth.")
+   .AllowAnonymous();
 ```
 
 
